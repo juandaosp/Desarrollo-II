@@ -6,4 +6,5 @@
 *.ear
 *.properties
 *.xml
+/DesarrolloIIProyecto/src/META-INF
 /DesarrolloIIProyecto/build/
