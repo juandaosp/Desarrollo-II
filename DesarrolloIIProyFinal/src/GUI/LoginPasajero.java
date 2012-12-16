@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -82,9 +83,15 @@ public class LoginPasajero extends JFrame implements ActionListener{
             
             if (evento.getSource() == IniSesionPasajero){
             
+                try{
                 String pin = campoPin.getText();
                 
                 Usuario user = cu.consultarUsuario(pin);
+                }
+                catch(Exception e){
+                
+                    JOptionPane.showMessageDialog(null,e.getStackTrace() ,"Error", JOptionPane.ERROR_MESSAGE);
+                }
                 
             
                 
