@@ -4,6 +4,8 @@
  */
 package desarrolloiiproyfinal;
 
+import GUI.LoginPrincipal;
+
 /**
  *
  * @author ASUS
@@ -15,5 +17,8 @@ public class DesarrolloIIProyFinal {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        LoginPrincipal LP = new LoginPrincipal();
+        
     }
 }
