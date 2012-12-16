@@ -34,17 +34,21 @@ public class ControladorTarjeta
     
     }
     
-    public void consultarTarjeta(String pin)
+    public Tarjeta consultarTarjeta(String pin)
     {
         Iterator i;
         //sirve para ejecutar consultas
         i = manager.createQuery("SELECT t FROM Tarjeta t WHERE (t.pin = '"+pin+"')").getResultList().iterator();
+        Tarjeta tarjeta = new Tarjeta();
+        
         while(i.hasNext())
         {
-            Tarjeta tarjeta=(Tarjeta) i.next();
+           tarjeta=(Tarjeta) i.next();
             System.out.print(tarjeta.getPin());
             
         }
+        
+        return tarjeta;
     }
     
     public void insertarTarjeta(int costo,String estado,String fecha,int pin,String tipo,Estacion estacion)
