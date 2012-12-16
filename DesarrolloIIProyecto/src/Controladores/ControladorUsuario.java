@@ -42,23 +42,19 @@ public class ControladorUsuario {
        DaoUsuario = new UsuarioJpaController(mi_fabrica.getFactory());
     }
     
-    public Usuario consultarUsuario(String pin)
+    public void consultarUsuario(String idUsuario)
     {
          Iterator i;
             //sirve para ejecutar consultas
         
-            i = manager.createQuery("SELECT u FROM Usuario u WHERE (u.pinTarjeta = '"+pin+"')").getResultList().iterator();
+            i = manager.createQuery("SELECT u FROM usuario u WHERE (u.id_usuario ='"+idUsuario+"')").getResultList().iterator();
             System.out.print("id |\t Nombre  |\t serial |\t proveedor\n");
-            
-            Usuario myusuario = new Usuario();
-            
             while(i.hasNext())
             {
-                myusuario = (Usuario) i.next();
+                Usuario myusuario = (Usuario) i.next();
                 System.out.println("-----------------------------------------------------------------------------------");
                 System.out.println(myusuario.getIdUsuario()+"\t"+myusuario.getNombre()+"\t"+myusuario.getCiudad()+"\t"+myusuario.getDireccion()+"\t"+myusuario.getTelefono()+"\t"+myusuario.getPinTarjeta());
             }
-            return myusuario;
          
     }
     
