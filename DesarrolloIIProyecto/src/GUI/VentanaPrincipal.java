@@ -18,44 +18,47 @@ public class VentanaPrincipal extends JFrame implements ActionListener
 	private JTextField campoBusqueda, campoSegBusqueda;
 	private JMenuBar barraPrincipal;	
 	private JMenu menuRegistros, menuConsultas, menuOpciones, menuEdiciones;
-	private JMenuItem itemSalir, itemCliente, itemEmpleado, itemEquipo, itemOficina, itemPlanes, itemServicio;
-	private JMenuItem itemOFijo, itemOMInter, itemMLocal, itemContrato, itemContratoPrepago;	
-	private JMenuItem itemReposicion, itemSPPostpago, itemEdicionCliente, itemEdicionSPPostpago, itemEdicionPlanes;
-	private JMenuItem itemEdicionEmpleado, itemEdicionOficina, itemEdicionEquipo,itemEdicionOFijo,itemEdicionOMInter, itemEdicionMLocal;
-	private JMenuItem itemCClientesNuevos, itemFranjasUsoRed, itemPlanesEscogidos, itemUsuariosPrepago, itemUsuariosPostpago, itemDatosYConsumo;
-	private JMenuItem itemOpRoaming, itemOpLocalMasUsado, itemCorporativos, itemConsumoPorGenero, itemRobos, itemConsumoPorAbonado, itemEquipos;
-	private JPanel panelBotones;
+	private JMenuItem itemSalir, itemBus, itemEmpleado, itemEstacion, itemProgramacion, itemRecarga, itemRuta;
+	private JMenuItem itemSolicitud, itemTarjeta, itemPasajero, itemEdPasajero, itemEdEmpleado, itemEdBus, itemEdEstacion;
+        private JMenuItem itemEdProgramacion, itemEdRecarga, itemEdRuta, itemEdTarjeta;
+                
+                
+        private JPanel panelBotones;
 	private ImageIcon imLogo;
 	private JTable tablaConsultas;
 	
 	private JScrollPane scrollConsultas;
 	private PanelCCAbonado panelCCAbonado;
-	private PanelCCOperador panelCCOperador;
+/*	private PanelCCOperador panelCCOperador;
 	private PanelEstadRobosPerdidasMes panelEstadisticas;
 	private PanelClienteNuevoMes panelClienteNuevoMes;
-	public String seleccion;
-	private boolean boolTabla;
 
+*/
+        public String seleccion;
+	private boolean boolTabla;
+        
 	public VentanaPrincipal(String tipoUsuario)
 	{
-		super("COLMOVIL");
-
-		
-
-		panelEstadisticas = new PanelEstadRobosPerdidasMes();
+		super("Principal - " +tipoUsuario);
+                
+                
+               
+                itemSalir = new JMenuItem("Salir");
+                
+                //panelEstadisticas = new PanelEstadRobosPerdidasMes();
 		panelCCAbonado =  new PanelCCAbonado();
-		panelCCOperador = new PanelCCOperador();
-		panelClienteNuevoMes = new PanelClienteNuevoMes();
-		panelEstadisticas.btConsultaTipo.addActionListener(this);
-		panelEstadisticas.btConsultaMes.addActionListener(this);
-		panelEstadisticas.btnCancelar_1.addActionListener(this);
+		//panelCCOperador = new PanelCCOperador();
+		//panelClienteNuevoMes = new PanelClienteNuevoMes();
+		//panelEstadisticas.btConsultaTipo.addActionListener(this);
+		//panelEstadisticas.btConsultaMes.addActionListener(this);
+		//panelEstadisticas.btnCancelar_1.addActionListener(this);
 		panelCCAbonado.btnAceptar.addActionListener(this);
 		panelCCAbonado.btnCancelar.addActionListener(this);
-		panelCCOperador.btnAceptar.addActionListener(this);
-		panelCCOperador.btnCancelar.addActionListener(this);
-		panelClienteNuevoMes.btConsultaTipo.addActionListener(this);
-		panelClienteNuevoMes.btConsultaMes.addActionListener(this);
-		panelClienteNuevoMes.btnCancelar_1.addActionListener(this);
+		//panelCCOperador.btnAceptar.addActionListener(this);
+		//panelCCOperador.btnCancelar.addActionListener(this);
+		//panelClienteNuevoMes.btConsultaTipo.addActionListener(this);
+		//panelClienteNuevoMes.btConsultaMes.addActionListener(this);
+		//panelClienteNuevoMes.btnCancelar_1.addActionListener(this);
 		seleccion = "";
 		boolTabla = false;
 
@@ -77,205 +80,172 @@ public class VentanaPrincipal extends JFrame implements ActionListener
 		campoSegBusqueda = new JTextField();
 
 		//Creacion de la Barra de Menu		
-		barraPrincipal = new JMenuBar();
-		menuRegistros = new JMenu ("Registros");
+		
+                barraPrincipal = new JMenuBar();
+		
+                menuRegistros = new JMenu ("Registros");
 		menuEdiciones = new JMenu ("Ver");
 		menuConsultas = new JMenu ("Consultas");
 		menuOpciones = new JMenu ("Opciones");		
 
-		itemCliente = new JMenuItem ("Cliente");
+		itemBus = new JMenuItem ("Bus");
+                itemPasajero = new JMenuItem ("Pasajero");
 		itemEmpleado = new JMenuItem ("Empleado");
-		itemEquipo = new JMenuItem ("Equipo");
-		itemOficina = new JMenuItem ("Oficina");
-		itemPlanes = new JMenuItem ("Plan Postpago");
-		itemContrato = new JMenuItem ("Contrato Postpago");
-		itemContratoPrepago = new JMenuItem ("Contrato Prepago");
-		itemSPPostpago = new JMenuItem ("Servicio Plan Postpago");
-		itemReposicion = new JMenuItem ("Reposicion");
-		itemOFijo = new JMenuItem ("Operador Fijo");
-		itemOMInter = new JMenuItem ("Operador Movil Internacional");
-		itemMLocal = new JMenuItem ("Operador Movil Local");	
-		itemSalir = new JMenuItem ("Salir");
-		itemServicio = new JMenuItem("Servicio");
+		itemEstacion = new JMenuItem ("Estacion");
+		itemProgramacion = new JMenuItem ("Programacion");
+		itemRecarga = new JMenuItem ("Recarga");
+                itemSolicitud = new JMenuItem ("Solicitud");
+                itemTarjeta = new JMenuItem ("Tarjeta");
+                itemRuta = new JMenuItem ("Ruta");
+		
+		itemEdPasajero = new JMenuItem("Pasajero");
+                itemEdEmpleado = new JMenuItem("Empleados");
+                itemEdBus = new JMenuItem("Bus") ;
+                itemEdEstacion = new JMenuItem("Estacion");
+                itemEdProgramacion = new JMenuItem("Programacion");
+                itemEdRecarga = new JMenuItem("Recarga");
+                itemEdRuta = new JMenuItem("Ruta");
+                itemEdTarjeta = new JMenuItem("Tarjeta");
 
-		itemEdicionCliente = new JMenuItem ("Clientes");
-		itemEdicionEmpleado = new JMenuItem ("Empleados");
-		itemEdicionOficina = new JMenuItem ("Oficinas");
-		itemEdicionEquipo = new JMenuItem ("Equipos");
-		itemEdicionPlanes = new JMenuItem ("Planes Postpago");
-		itemEdicionSPPostpago = new JMenuItem ("Servicios Postpago");
-		itemEdicionOFijo = new JMenuItem ("Operadores Fijos");
-		itemEdicionOMInter = new JMenuItem ("Operadores Moviles Internacionales");
-		itemEdicionMLocal = new JMenuItem ("Operadores Moviles Locales");
-
-		itemCClientesNuevos = new JMenuItem ("Consultar Clientes Nuevos");
-		itemFranjasUsoRed = new JMenuItem ("Franjas de Mayor Uso de la Red");
-		itemPlanesEscogidos = new JMenuItem ("Planes mas escogidos");
-		itemUsuariosPrepago = new JMenuItem ("Usuarios de Planes Prepago Registrados");
-		itemUsuariosPostpago = new JMenuItem ("Usuarios de Planes Postpago Registrados");
-		itemDatosYConsumo = new JMenuItem ("Usuarios con plan de datos y su consumo");
-		itemOpRoaming = new JMenuItem ("Operadores extranjeros que ofrecen tarifas de roamming");
-		itemOpLocalMasUsado = new JMenuItem ("Operadores nacionales m�s frecuentemente utilizados");
-		itemCorporativos = new JMenuItem ("Planes preferidos por usuarios de convenios corporativos");
-		itemConsumoPorGenero = new JMenuItem ("Consumo de servicios de mensajes, internet y correo electr�nico por regi�n, por g�nero");
-		itemRobos = new JMenuItem ("Estad�sticas de robos y p�rdidas por mes y ciudad");
-		itemConsumoPorAbonado = new JMenuItem ("Consumo por tipo de abonado de planes postpago");
-		itemEquipos = new JMenuItem ("Equipos m�s demandados");
-
+		
 		btCerrar.addActionListener(this);
 		btInformacion.addActionListener(this);
 		btBorrar.addActionListener(this);
 		btBuscar.addActionListener(this);
 
-		itemCliente.addActionListener(this);
-		itemOficina.addActionListener(this);
-		itemEquipo.addActionListener(this);
 		itemEmpleado.addActionListener(this);
-		itemPlanes.addActionListener(this);
-		itemContrato.addActionListener(this);
-		itemContratoPrepago.addActionListener(this);
-		itemSPPostpago.addActionListener(this);
-		itemReposicion.addActionListener(this);
-		itemOFijo.addActionListener(this);
-		itemOMInter.addActionListener(this);
+		itemPasajero.addActionListener(this);
+		itemBus.addActionListener(this);
+		itemProgramacion.addActionListener(this);
+		itemRecarga.addActionListener(this);
+		itemRuta.addActionListener(this);
+		itemSolicitud.addActionListener(this);
+		itemTarjeta.addActionListener(this);
 		itemSalir.addActionListener(this);
-		itemMLocal.addActionListener(this);
 
-		itemEdicionCliente.addActionListener(this);		
-		itemEdicionEmpleado.addActionListener(this);
-		itemEdicionOficina.addActionListener(this);
-		itemEdicionEquipo.addActionListener(this);
-		itemEdicionPlanes.addActionListener(this);
-		itemEdicionSPPostpago.addActionListener(this);
-		itemEdicionOFijo.addActionListener(this);
-		itemEdicionOMInter.addActionListener(this);
-		itemEdicionMLocal.addActionListener(this);
+        
+		itemEdPasajero.addActionListener(this);		
+		itemEdBus.addActionListener(this);
+		itemEdEmpleado.addActionListener(this);
+		itemEdEstacion.addActionListener(this);
+		itemEdProgramacion.addActionListener(this);
+		itemEdRecarga.addActionListener(this);
+		itemEdRuta.addActionListener(this);
+		itemEdTarjeta.addActionListener(this);
 
-		itemCClientesNuevos.addActionListener(this);
-		itemFranjasUsoRed.addActionListener(this);
-		itemPlanesEscogidos.addActionListener(this);
-		itemUsuariosPrepago.addActionListener(this);
-		itemUsuariosPostpago.addActionListener(this);
-		itemDatosYConsumo.addActionListener(this);
-		itemOpRoaming.addActionListener(this);
-		itemOpLocalMasUsado.addActionListener(this);
-		itemCorporativos.addActionListener(this);
-		itemConsumoPorGenero.addActionListener(this);
-		itemRobos.addActionListener(this);
-		itemConsumoPorAbonado.addActionListener(this);
-		itemEquipos.addActionListener(this);
-		itemServicio.addActionListener(this);
+		
 
-		menuRegistros.add(itemCliente);
+		menuRegistros.add(itemPasajero);
 		menuRegistros.add(itemEmpleado);			
-		menuRegistros.add(itemEquipo);
-		menuRegistros.add(itemOficina);
-		menuRegistros.add(itemPlanes);
-		menuRegistros.add(itemContrato);
-		menuRegistros.add(itemContratoPrepago);
-		menuRegistros.add(itemServicio);
-		menuRegistros.add(itemSPPostpago);
-		menuRegistros.add(itemReposicion);
-		menuRegistros.add(itemOFijo);
-		menuRegistros.add(itemOMInter);			
-		menuRegistros.add(itemMLocal);
+		menuRegistros.add(itemBus);
+		menuRegistros.add(itemEstacion);
+		menuRegistros.add(itemProgramacion);
+		menuRegistros.add(itemRecarga);
+		menuRegistros.add(itemRuta);
+		menuRegistros.add(itemSolicitud);
+		menuRegistros.add(itemTarjeta);
 
 
-		menuEdiciones.add(itemEdicionCliente);
-		menuEdiciones.add(itemEdicionEmpleado);
-		menuEdiciones.add(itemEdicionOficina);
-		menuEdiciones.add(itemEdicionEquipo);
-		menuEdiciones.add(itemEdicionPlanes);
-		menuEdiciones.add(itemEdicionSPPostpago);
-		menuEdiciones.add(itemEdicionOFijo);
-		menuEdiciones.add(itemEdicionOMInter);
-		menuEdiciones.add(itemEdicionMLocal);
+		menuEdiciones.add(itemEdPasajero);
+		menuEdiciones.add(itemEdEmpleado);
+		menuEdiciones.add(itemEdBus);
+		menuEdiciones.add(itemEdEstacion);
+		menuEdiciones.add(itemEdProgramacion);
+		menuEdiciones.add(itemEdRuta);
+		menuEdiciones.add(itemEdRecarga);
+		menuEdiciones.add(itemEdTarjeta);
 
-		menuConsultas.add(itemCClientesNuevos);
-		menuConsultas.add(itemFranjasUsoRed);
-		menuConsultas.add(itemPlanesEscogidos);
-		menuConsultas.add(itemUsuariosPrepago);
-		menuConsultas.add(itemUsuariosPostpago);
-		menuConsultas.add(itemDatosYConsumo);
-		menuConsultas.add(itemOpRoaming);
-		menuConsultas.add(itemOpLocalMasUsado);
-		menuConsultas.add(itemCorporativos);
-		menuConsultas.add(itemConsumoPorGenero);
-		menuConsultas.add(itemRobos);
-		menuConsultas.add(itemConsumoPorAbonado);
-		menuConsultas.add(itemEquipos);
 
-		menuOpciones.add(itemSalir);	
+                menuOpciones.add(itemSalir);	
 
 		barraPrincipal.add(menuRegistros);
 		barraPrincipal.add(menuEdiciones);
 		barraPrincipal.add(menuConsultas);
 		barraPrincipal.add(menuOpciones);
-
-
-		setJMenuBar(barraPrincipal);
+                
+                if("Pasajero".equals(tipoUsuario)){
+                    
+                    itemSalir.setEnabled(false);
+                    itemBus.setEnabled(false);
+                    itemEmpleado.setEnabled(false);
+                    itemEstacion.setEnabled(false); 
+                    itemProgramacion.setEnabled(false); 
+                    itemRecarga.setEnabled(false); 
+                    itemRuta.setEnabled(false);
+                    itemSolicitud.setEnabled(false); 
+                    itemTarjeta.setEnabled(false); 
+                    itemPasajero.setEnabled(false);
+                    
+                    itemEdEmpleado.setEnabled(false);
+                    itemEdBus.setEnabled(false); 
+                    itemEdEstacion.setEnabled(false);
+                    itemEdProgramacion.setEnabled(false);
+                    itemEdRecarga.setEnabled(false); 
+                    itemEdRuta.setEnabled(false); 
+                    itemEdTarjeta.setEnabled(false);
+                }
+                
+                setJMenuBar(barraPrincipal);
 		setVisible(true);
 		setSize(800,600);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		
 
 	}
 
 	public void actionPerformed(ActionEvent evento) 
 	{
-
-		if (evento.getSource() == btInformacion)
-		{
-			int nFila =tablaConsultas.getSelectedRow();
-			//hacemos una condicion de que si la varialbe i es igual a - es que no se ha seleccionado ninguna 
-			//fila,
-			if(nFila == -1)
-			{
-				JOptionPane.showMessageDialog(null,"Por favor seleccione una fila");
-			}
-			else//de lo contrario si se selecciono la fila
-			{
-				String identificacion = (String) tablaConsultas.getValueAt(nFila,0);
-
-				if(seleccion.equals("cliente"))
+            
+            if (evento.getSource() == btInformacion)
+		
+            {
+                int nFila =tablaConsultas.getSelectedRow();
+                //hacemos una condicion de que si la varialbe i es igual a - es que no se ha seleccionado ninguna fila,
+			
+                if(nFila == -1)
+                {
+                    JOptionPane.showMessageDialog(null,"Por favor seleccione una fila");
+                }
+                
+                else//de lo contrario si se selecciono la fila
+                {
+                    String identificacion = (String) tablaConsultas.getValueAt(nFila,0);
+                    
+                    if(seleccion.equals("pasajero"))
+                    {
+                        //EdPasajero EC = new EditarCliente(identificacion,this);
+                    }
+                    if(seleccion.equals("empleado"))
+                    {
+                        //EditarEmpleado ED = new EditarEmpleado(identificacion,this);
+                    }				
+				if(seleccion.equals("bus"))
 				{
-					EditarCliente EC = new EditarCliente(identificacion,this);					
+					//EditarBus EO = new EditarOficina(identificacion,this);
 				}				
-				if(seleccion.equals("empleado"))
-				{
-					EditarEmpleado ED = new EditarEmpleado(identificacion,this);
-				}				
-				if(seleccion.equals("oficina"))
-				{
-					EditarOficina EO = new EditarOficina(identificacion,this);
-				}				
-				if(seleccion.equals("equipo"))
+				if(seleccion.equals("programacion"))
 				{	
-					EditarEquipoCelular EEC = new EditarEquipoCelular(identificacion,this);
+					//EditarProgramacion EEC = new EditarEquipoCelular(identificacion,this);
 				}				
-				if(seleccion.equals("planpostpago"))
+				if(seleccion.equals("recarga"))
 				{
-					EditarPlanPostpago EPP = new EditarPlanPostpago(identificacion,this);
+					//EditarRecarga EPP = new EditarPlanPostpago(identificacion,this);
 				}				
-				if(seleccion.equals("sppostpago"))
+				if(seleccion.equals("ruta"))
 				{		
 				}				
-				if(seleccion.equals("ofijo"))
+				if(seleccion.equals("solicitud"))
 				{
-					String nom_pais = (String) tablaConsultas.getValueAt(nFila,1);
-					EditarOperadorFijo EOF = new EditarOperadorFijo(identificacion,nom_pais,this);
+					//String nom_pais = (String) tablaConsultas.getValueAt(nFila,1);
+					//EditarOperadorFijo EOF = new EditarOperadorFijo(identificacion,nom_pais,this);
 				}				
-				if(seleccion.equals("ominter"))
+				if(seleccion.equals("tarjeta"))
 				{	
-					String nom_pais = (String) tablaConsultas.getValueAt(nFila,1);
-					EditarOpMovilInternacional EOMI = new EditarOpMovilInternacional(identificacion, nom_pais,this);
+					//String nom_pais = (String) tablaConsultas.getValueAt(nFila,1);
+					//EditarOpMovilInternacional EOMI = new EditarOpMovilInternacional(identificacion, nom_pais,this);
 				}				
-				if(seleccion.equals("mlocal"))
-				{
-					String nom_pais = (String) tablaConsultas.getValueAt(nFila,1);
-					EditarMovilLocal EML = new EditarMovilLocal(identificacion, nom_pais,this);
-				}				
+								
 			}
 		}
 
@@ -294,27 +264,32 @@ public class VentanaPrincipal extends JFrame implements ActionListener
 
 				if(seleccion.equals("cliente"))
 				{
+					//daocliente.borrarCliente(identificacion);
 					removerContenidoVentana();
 					mostrarTabla("cliente");
 				}				
 				if(seleccion.equals("empleado"))
 				{
+					//daoempleado.borrarEmpleado(identificacion);
 					removerContenidoVentana();
 					mostrarTabla("empleado");
 				}				
 				if(seleccion.equals("oficina"))
 				{
+					//daooficina.borrarOficina(identificacion);
 					removerContenidoVentana();
 					mostrarTabla("oficina");
 				}				
 				if(seleccion.equals("equipo"))
 				{
+					//daoequipo.borrarEquipo(identificacion);
 					removerContenidoVentana();
 					mostrarTabla("equipo");
 
 				}				
 				if(seleccion.equals("planpostpago"))
 				{
+					//daoplanpostpago.borrarPlanPostPago(identificacion);
 					removerContenidoVentana();
 					mostrarTabla("planpostpago");
 				}				
@@ -326,18 +301,21 @@ public class VentanaPrincipal extends JFrame implements ActionListener
 				if(seleccion.equals("ofijo"))
 				{
 					String pais = (String) tablaConsultas.getValueAt(nFila,1);
+					//daooperadorfijo.borrarOperadorFijo(identificacion, pais);
 					removerContenidoVentana();
 					mostrarTabla("ofijo");
 				}				
 				if(seleccion.equals("ominter"))
 				{
 					String pais = (String) tablaConsultas.getValueAt(nFila,1);
+					//daoopmovilinter.borrarOMI(identificacion, pais);
 					removerContenidoVentana();
 					mostrarTabla("ominter");
 				}				
 				if(seleccion.equals("mlocal"))
 				{
 					String pais = (String) tablaConsultas.getValueAt(nFila,1);
+					//daoopmovillocal.borrarOML(identificacion, pais);
 					removerContenidoVentana();
 					mostrarTabla("mlocal");
 				}				
@@ -388,234 +366,88 @@ public class VentanaPrincipal extends JFrame implements ActionListener
 				JOptionPane.showMessageDialog(null, "La busqueda no obtuvo resultados","ERROR", JOptionPane.ERROR_MESSAGE);	
 		}	
 
-		if (evento.getSource() == panelClienteNuevoMes.btConsultaTipo)
-		{
-			String opcion = panelClienteNuevoMes.getOpcionTipo();
-
-			this.remove(panelClienteNuevoMes);
-
-			if(opcion.equals("Postpago"))
-			{
-				mostrarConsultas("Postpago");
-
-			}
-			if(opcion.equals("Prepago"))
-			{
-				mostrarConsultas("Prepago");
-			}
-		}	
-
-		if (evento.getSource() == panelClienteNuevoMes.btConsultaMes)
-		{
-			panelClienteNuevoMes.generarConsultaMes();
-
-			this.remove(panelClienteNuevoMes);
-			mostrarConsultasConFechas(panelClienteNuevoMes.getFechaI(), panelClienteNuevoMes.getFechaF());
-		}
-
-
-		if (evento.getSource() == panelClienteNuevoMes.btnCancelar_1)
-		{
-			this.remove(panelClienteNuevoMes);
-			this.repaint();
-
-		}
-
-		if (evento.getSource() == panelEstadisticas.btConsultaTipo)
-		{
-			String ciudad = panelEstadisticas.getOpcionCiudades();
-
-			this.remove(panelEstadisticas);
-
-			mostrarConsultasConCiudades(ciudad);
-
-		}	
-
-		if (evento.getSource() == panelEstadisticas.btConsultaMes)
-		{
-			panelEstadisticas.generarConsultaMes();
-
-			this.remove(panelEstadisticas);
-
-			mostrarConsultasConFechasRobo(panelEstadisticas.getFechaI(), panelEstadisticas.getFechaF());
-
-			this.remove(panelEstadisticas);
-
-		}
-
-
-		if (evento.getSource() == panelEstadisticas.btnCancelar_1)
-		{
-			this.remove(panelEstadisticas);
-			this.repaint();
-
-		}
-
-		if (evento.getSource() == panelCCOperador.btnAceptar)
-		{
-			String opcionOperador = panelCCOperador.getOpcion();
-
-			this.remove(panelCCOperador);
-
-			if(opcionOperador.equals("Operadores Locales Mas Usados por Llamadas"))
-			{
-				mostrarConsultas("Operadores Locales Mas Usados Llamadas");
-
-
-			}
-			if(opcionOperador.equals("Operadores Locales Mas Usados por Sms"))
-			{
-				mostrarConsultas("OperadoresLocalesMasUsadosSms");
-			}
-			if(opcionOperador.equals("Operadores Locales Mas Usados por Datos"))
-			{
-				mostrarConsultas("Operadores Locales Mas Usados Datos");
-			}
-
-		}
-
-		if (evento.getSource() == panelCCOperador.btnCancelar)
-		{
-			this.remove(panelCCOperador);
-			this.repaint();
-
-		}
-
-		if (evento.getSource() == panelCCAbonado.btnAceptar)
-		{
-			String opcion = panelCCAbonado.getOpcion();
-
-			this.remove(panelCCAbonado);
-
-			if(opcion.equals("por Llamadas"))
-			{
-				mostrarConsultas("por Llamadas");
-
-			}
-
-			if(opcion.equals("por SMS"))
-			{
-				mostrarConsultas("por SMS");				
-			}
-
-			if(opcion.equals("por Internet"))
-			{
-				mostrarConsultas("por Internet");	
-			}
-
-
-		}
-
-		if (evento.getSource() == panelCCAbonado.btnCancelar)
-		{
-			this.remove(panelCCAbonado);
-			this.repaint();
-
-		}	
+			
 		
 		//EVENTOS REGISTROS
-		if (evento.getSource() == itemCliente)
+		if (evento.getSource() == itemPasajero)
 		{
-			RegistrarCliente RC = new RegistrarCliente(this);
-		}
-		if (evento.getSource() == itemOficina)
-		{	
-			RegistrarOficina ro = new RegistrarOficina(this);
+			//RegistrarPasajero RC = new RegistrarCliente(this);
 		}
 		if (evento.getSource() == itemEmpleado)
 		{
-			RegistrarEmpleado ce = new RegistrarEmpleado(this); 
+			//RegistrarEmpleado ce = new RegistrarEmpleado(this); 
 		}	
-		if (evento.getSource() == itemPlanes)
+		if (evento.getSource() == itemBus)
 		{
-			RegistroPlanPostpago pp = new RegistroPlanPostpago(this);
+			//RegistroBus pp = new RegistroPlanPostpago(this);
 		}	
-		if (evento.getSource() == itemEquipo)
+		if (evento.getSource() == itemEstacion)
 		{
-			RegistrarEquipoCelular regObj = new RegistrarEquipoCelular(this);
+			//RegistrarEstacion regObj = new RegistrarEquipoCelular(this);
 		}
-		if (evento.getSource() == itemContrato)
+		if (evento.getSource() == itemProgramacion)
 		{
-			RegistroContrato contratoObj = new RegistroContrato();
+			//RegistroProgramacion contratoObj = new RegistroContrato();
 		}
-		if (evento.getSource() == itemContratoPrepago)
+		if (evento.getSource() == itemRecarga)
 		{
-			removerContenidoVentana();
+			//RegistroRecarga RecargaObj = new RegistroContrato();
 		}		
-		if(evento.getSource() == itemServicio)
+		if(evento.getSource() == itemRuta)
 		{
-			RegistroServicio s = new RegistroServicio();
+			//RegistroRuta s = new RegistroRuta();
 		}		
-		if (evento.getSource() == itemSPPostpago)
+		if (evento.getSource() == itemSolicitud)
 		{
-			RegistroServicioPPostpago reg = new RegistroServicioPPostpago();
+			//RegistroSolicitud reg = new RegistroSolicitud();
 		}
-		if (evento.getSource() == itemReposicion)
+		if (evento.getSource() == itemTarjeta)
 		{
-			RegistrarReposicion repo = new RegistrarReposicion();
+			//RegistrarTarjeta tarjeta = new RegistrarTarjeta();
 		}
-		if (evento.getSource() == itemOFijo)
-		{
-			RegistroOperadorFijo opObj = new RegistroOperadorFijo(this);
-		}
-		if (evento.getSource() == itemOMInter)
-		{
-			RegistrarOpMovilInternacional movilInt = new RegistrarOpMovilInternacional(this);
-		}
-		if (evento.getSource() == itemMLocal)
-		{
-			RegistroMovilLocal movilLocal = new RegistroMovilLocal(this);
-		}
+		
 
 		//EVENTOS INVENTARIO
-		if (evento.getSource() == itemEdicionCliente)
+		if (evento.getSource() == itemEdPasajero)
 		{
-			seleccion = "cliente";
-			mostrarTabla("cliente");
+			seleccion = "pasajero";
+			mostrarTabla("pasajero");
 		}
-		if (evento.getSource() == itemEdicionEmpleado)
+		if (evento.getSource() == itemEdEmpleado)
 		{
 			seleccion = "empleado";
 			mostrarTabla("empleado");
 		}
-		if (evento.getSource() == itemEdicionOficina)
+		if (evento.getSource() == itemEdPasajero)
 		{
-			seleccion = "oficina";
-			mostrarTabla("oficina");			
+			seleccion = "pasajero";
+			mostrarTabla("pasajero");			
 		}
-		if (evento.getSource() == itemEdicionEquipo)
+		if (evento.getSource() == itemEdProgramacion)
 		{
-			seleccion = "equipo";
-			mostrarTabla("equipo");
+			seleccion = "programacion";
+			mostrarTabla("programacion");
 		}
-		if (evento.getSource() == itemEdicionPlanes)
+		if (evento.getSource() == itemEdRecarga)
 		{
-			seleccion = "planpostpago";
-			mostrarTabla("planpostpago");
+			seleccion = "recarga";
+			mostrarTabla("recarga");
 		}
-		if (evento.getSource() == itemEdicionSPPostpago)
+		if (evento.getSource() == itemEdRuta)
 		{
-			seleccion = "sppostpago";
-			mostrarTabla("sppostpago");
+			seleccion = "ruta";
+			mostrarTabla("ruta");
 		}
-		if (evento.getSource() == itemEdicionOFijo)
+		if (evento.getSource() == itemEdTarjeta)
 		{
-			seleccion = "ofijo";
-			mostrarTabla("ofijo");
+			seleccion = "tarjeta";
+			mostrarTabla("tarjeta");
 		}
-		if (evento.getSource() == itemEdicionOMInter)
-		{
-			seleccion = "ominter";
-			mostrarTabla("ominter");
-		}
-		if (evento.getSource() == itemEdicionMLocal)
-		{
-			seleccion = "mlocal";
-			mostrarTabla("mlocal");
-		}
+                
 
 		//EVENTOS CONSULTAS
-		if (evento.getSource() == itemCClientesNuevos)
+		/*
+                if (evento.getSource() == itemCClientesNuevos)
 		{
 			try 
 			{
@@ -705,12 +537,17 @@ public class VentanaPrincipal extends JFrame implements ActionListener
 		{
 			mostrarConsultas("Equipos Mas Demandados");
 		}
+                * 
+                */
+                
 		if (evento.getSource() == itemSalir)
 		{
 			System.exit(0);
 		}
+                
 	}//FIN DEL MANEJADOR DE EVENTOS	
 
+		
 	////////////////////////////////////////////////////////////////////////////////////
 	
 	public void mostrarTabla(String opcion)
@@ -726,54 +563,51 @@ public class VentanaPrincipal extends JFrame implements ActionListener
 		lbSegBusqueda.setHorizontalAlignment(4);
 
 
-		if(opcion == "cliente")
+		if(opcion == "empleado")
 		{
 			lbBusqueda.setText("Identificacion");
 		}	
 
-		if(opcion == "empleado")
+		if(opcion == "usuario")
 		{		
 			lbBusqueda.setText("Identificacion");
 		}
 
-		if(opcion == "oficina")
+		if(opcion == "bus")
 		{
-			lbBusqueda.setText("Codigo Oficina");
+			lbBusqueda.setText("Placa");
 		}
 
-		if(opcion == "equipo")
+		if(opcion == "programacion")
 		{	
-			lbBusqueda.setText("IMEI");
+			lbBusqueda.setText("Identificacion Conductor");
 		}
 
-		if(opcion == "planpostpago")
+		if(opcion == "recarga")
 		{	
-			lbBusqueda.setText("Numero Plan");
+			lbBusqueda.setText("pin tarjeta");
 		}
 
-		if(opcion == "sppostpago")
+		if(opcion == "ruta")
+                    lbBusqueda.setText("Nombe de la ruta");
 		{		
 			//modeloConsultas = daoservplanpostpago.g
 		}
 
-		if(opcion == "ofijo")
+		if(opcion == "solicitud")
 		{
-			lbBusqueda.setText("Operador");
-			lbSegBusqueda.setText("Pais");
+			lbBusqueda.setText("# de Ticket");
 		}
 
-		if(opcion == "ominter")
+		if(opcion == "tarjeta")
 		{
-			lbBusqueda.setText("Operador");
-			lbSegBusqueda.setText("Pais");
+			lbBusqueda.setText("Pin");
+			
 		}
 
-		if(opcion == "mlocal")
-		{		
-			lbBusqueda.setText("Operador");
-		}
+		
 
-		if(opcion.equals("ofijo") || opcion.equals("ominter"))
+		if(opcion.equals("empleado"))
 		{			
 			JPanel panelA = new JPanel(new GridLayout(1,3,5,5));
 			panelA.add(btInformacion);
@@ -1008,7 +842,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener
 
 	public static void main(String[] args) 
 	{
-		//VentanaPrincipal VP = new VentanaPrincipal();
+		VentanaPrincipal VP = new VentanaPrincipal("");
 	}
 
 }
