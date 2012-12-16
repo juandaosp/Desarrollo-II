@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import Controladores.ControladorUsuario;
+import Logica.Usuario;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.FlowLayout;
@@ -29,6 +31,7 @@ public class LoginPasajero extends JFrame implements ActionListener{
     private JLabel labLogin, labPass, labPin, labEsp;
     private JPanel panelPrincipal, panelBotones;
     private GridLayout GLPS;
+    private ControladorUsuario cu = new ControladorUsuario();
     
     public LoginPasajero(){
         
@@ -77,12 +80,18 @@ public class LoginPasajero extends JFrame implements ActionListener{
     }    public void actionPerformed(ActionEvent evento) 
 	{
             
+            if (evento.getSource() == IniSesionPasajero){
+            
+                String pin = campoPin.getText();
+                
+                Usuario user = cu.consultarUsuario(pin);
+                
+            
+                
+            
+            }
             
 }
 
-    public static void main(String a[]){
-    
-        LoginPasajero l = new LoginPasajero();
-    
-    }
+   
 }
