@@ -10,7 +10,7 @@ import GUI.LoginPrincipal;
  *
  * @author ASUS
  */
-public class DesarrolloIIProyecto {
+public class DesarrolloIIProyecto { 
 
     /**
      * @param args the command line arguments
