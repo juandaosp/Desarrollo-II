@@ -1,7 +1,5 @@
 package GUI;
 
-import DAO.DAOServicio;
-import Logica.Servicio;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -61,67 +59,77 @@ public class RegistroServicio extends JFrame implements ActionListener
 		setVisible(true);
 	}
 	
-	public void actionPerformed(ActionEvent ev) 
-	{
-		if (ev.getSource()== btRegistrar)
-		{
-                    String nombre, identificacion, tarifa;
-                    
-                    	 nombre = campoNombre.getText();
-                         identificacion = campoIDServicio.getText(); 
-                         tarifa = campoTarifa.getText();
-                         
-                         try{
-                         Servicio s = new Servicio();
-                         
-                         s.setIdServicio(identificacion);
-                         s.setNombre(nombre);
-                         s.setTarifaExtra(Integer.parseInt(tarifa));
-                         
-                         DAOServicio ds = new DAOServicio();
-                         
-                         boolean bool = ds.ComprovarIdServicio(identificacion);
-                         
-                         if (bool == true){
-                         
-                             JOptionPane.showMessageDialog(null, "Error el servicio con identificacion: "
-                                     + identificacion+ " Ya existe", "Error", JOptionPane.ERROR_MESSAGE);
-                                                          
-                             campoIDServicio.setText("");
-
-                         
-                         }else
-                         {
-                             ds.guardarServicio(s);
-                             
-                             campoTarifa.setText("");
-                             campoNombre.setText("");
-                             campoIDServicio.setText("");
-                         }
-                         }
-                         catch(NumberFormatException e)
-                         {
-                             
-                             JOptionPane.showMessageDialog(null, "Error de formato, compruebe los campos con "
-                                     + "los datos: "+ e.getMessage());
-                             
-                             campoTarifa.setText("");
-                        
-                         }
-                }		
-		
-		if (ev.getSource()== btCancelar)
-		{
-			this.dispose();
-		}
-                
-                if(ev.getSource() == btLimpiar)
-                {
-                
-                    campoTarifa.setText("");
-                    campoNombre.setText("");
-                    campoIDServicio.setText("");
-                
-                }
+//	public void actionPerformed(ActionEvent ev) 
+//	{
+//		if (ev.getSource()== btRegistrar)
+//		{
+//                    String nombre, identificacion, tarifa;
+//                    
+//                    	 nombre = campoNombre.getText();
+//                         identificacion = campoIDServicio.getText(); 
+//                         tarifa = campoTarifa.getText();
+//                         
+//                         try{
+////                         Servicio s = new Servicio();
+////                         
+////                         s.setIdServicio(identificacion);
+////                         s.setNombre(nombre);
+////                         s.setTarifaExtra(Integer.parseInt(tarifa));
+////                         
+////                         DAOServicio ds = new DAOServicio();
+////                         
+////                             boolean bool = ds.ComprovarIdServicio(identificacion);
+//                         
+//                         if (bool == true){
+//                         
+//                             JOptionPane.showMessageDialog(null, "Error el servicio con identificacion: "
+//                                     + identificacion+ " Ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+//                                                          
+//                             campoIDServicio.setText("");
+//
+//                         
+//                         }else
+//                         {
+//                             ds.guardarServicio(s);
+//                             
+//                             campoTarifa.setText("");
+//                             campoNombre.setText("");
+//                             campoIDServicio.setText("");
+//                         }
+//                         }
+//                         catch(NumberFormatException e)
+//                         {
+//                             
+//                             JOptionPane.showMessageDialog(null, "Error de formato, compruebe los campos con "
+//                                     + "los datos: "+ e.getMessage());
+//                             
+//                             campoTarifa.setText("");
+//                        
+//                         }
+//                }		
+//		
+//		if (ev.getSource()== btCancelar)
+//		{
+//			this.dispose();
+//		}
+//                
+//                if(ev.getSource() == btLimpiar)
+//                {
+//                
+//                    campoTarifa.setText("");
+//                    campoNombre.setText("");
+//                    campoIDServicio.setText("");
+//                
+//                }
+//        }
+        
+        public static void main(String args[])
+        {
+            RegistroServicio servicio = new RegistroServicio();
         }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
