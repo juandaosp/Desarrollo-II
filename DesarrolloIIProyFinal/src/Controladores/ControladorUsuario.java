@@ -42,20 +42,23 @@ public class ControladorUsuario {
        DaoUsuario = new UsuarioJpaController(mi_fabrica.getFactory());
     }
     
-    public void consultarUsuario(String idUsuario)
+    public Usuario consultarUsuario(String idUsuario)
     {
          Iterator i;
             //sirve para ejecutar consultas
         
             i = manager.createQuery("SELECT u FROM usuario u WHERE (u.id_usuario ='"+idUsuario+"')").getResultList().iterator();
             System.out.print("id |\t Nombre  |\t serial |\t proveedor\n");
+            
+            Usuario myusuario = new Usuario();
+            
             while(i.hasNext())
             {
-                Usuario myusuario = (Usuario) i.next();
+                myusuario = (Usuario) i.next();
                 System.out.println("-----------------------------------------------------------------------------------");
                 System.out.println(myusuario.getIdUsuario()+"\t"+myusuario.getNombre()+"\t"+myusuario.getCiudad()+"\t"+myusuario.getDireccion()+"\t"+myusuario.getTelefono()+"\t"+myusuario.getPinTarjeta());
             }
-         
+         return myusuario;
     }
     
     public void agregarUsuario(String idUsuario, String nombre,  String ciudad, String direccion, String telefono, String pinTarjeta) throws PreexistingEntityException, Exception
