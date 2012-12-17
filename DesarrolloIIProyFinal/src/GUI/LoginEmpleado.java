@@ -42,7 +42,7 @@ public class LoginEmpleado extends JFrame implements ActionListener{
         IniSesionPasajero= new JButton("Iniciar Sesion"); 
         IniCancelar= new JButton("Cancelar");
         
-        ImageIcon imLogo = new ImageIcon(getClass().getResource("/images/smalllogo.png"));
+        ImageIcon imLogo = new ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Desarrollo-II\\DesarrolloIIProyFinal\\src\\images\\smalllogo.png");
         
         JLabel lbLogo = new JLabel(imLogo);
         
