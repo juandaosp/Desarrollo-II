@@ -13,7 +13,7 @@ public class fabrica_de_objetos
     //CONSTRUCTOR DE LA CLASE
     public fabrica_de_objetos()
     {       
-        factory = Persistence.createEntityManagerFactory("taller_jpa_unidad_de_persistencia");
+        factory = Persistence.createEntityManagerFactory("DesarrolloIIProyFinalPU");
     }  
     
     //METODO QUE RETORNA LA FABRICA DE OBJETOS

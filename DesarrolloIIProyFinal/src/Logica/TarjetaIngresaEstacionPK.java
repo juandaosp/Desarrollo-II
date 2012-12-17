@@ -11,7 +11,7 @@ import javax.persistence.Embeddable;
 
 /**
  *
- * @author Usuario
+ * @author ASUS
  */
 @Embeddable
 public class TarjetaIngresaEstacionPK implements Serializable {

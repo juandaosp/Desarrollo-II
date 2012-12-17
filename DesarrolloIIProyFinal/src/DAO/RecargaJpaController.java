@@ -21,7 +21,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Usuario
+ * @author ASUS
  */
 public class RecargaJpaController implements Serializable {
 

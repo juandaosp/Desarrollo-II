@@ -6,3 +6,4 @@ build/
 *.war
 *.ear
 /DesarrolloIIProyFinal/nbproject/private/
+/DesarrolloIIProyFinal/dist/

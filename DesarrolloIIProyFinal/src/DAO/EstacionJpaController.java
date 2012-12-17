@@ -25,7 +25,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Usuario
+ * @author ASUS
  */
 public class EstacionJpaController implements Serializable {
 

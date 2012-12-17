@@ -22,7 +22,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Usuario
+ * @author ASUS
  */
 public class EmpleadoJpaController implements Serializable {
 

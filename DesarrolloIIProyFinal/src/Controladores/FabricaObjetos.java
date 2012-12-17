@@ -13,7 +13,7 @@ public class FabricaObjetos
     //CONSTRUCTOR DE LA CLASE
     public FabricaObjetos()
     {       
-        factory = Persistence.createEntityManagerFactory("ProyectoDSIIPU");
+        factory = Persistence.createEntityManagerFactory("DesarrolloIIProyFinalPU");
     }  
     
     //METODO QUE RETORNA LA FABRICA DE OBJETOS

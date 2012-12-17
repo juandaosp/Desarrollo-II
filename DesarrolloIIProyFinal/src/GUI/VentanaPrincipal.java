@@ -375,7 +375,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener
 		}
 		if (evento.getSource() == itemEmpleado)
 		{
-			//RegistrarEmpleado ce = new RegistrarEmpleado(this); 
+			RegistroEmpleado ce = new RegistroEmpleado(); 
 		}	
 		if (evento.getSource() == itemBus)
 		{
@@ -383,7 +383,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener
 		}	
 		if (evento.getSource() == itemEstacion)
 		{
-			//RegistrarEstacion regObj = new RegistrarEquipoCelular(this);
+		     RegistroEstacion regObj = new RegistroEstacion();
 		}
 		if (evento.getSource() == itemProgramacion)
 		{

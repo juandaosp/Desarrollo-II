@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Usuario
+ * @author ASUS
  */
 @Entity
 @Table(name = "tarjeta_ingresa_estacion")

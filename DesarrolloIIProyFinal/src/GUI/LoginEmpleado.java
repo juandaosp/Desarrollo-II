@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import Controladores.ControladorEmpleados;
+import Logica.Empleado;
+import Logica.Usuario;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.FlowLayout;
@@ -15,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -28,6 +32,7 @@ public class LoginEmpleado extends JFrame implements ActionListener{
     private JTextField campoLogin, campoPass;
     private JLabel labLogin, labPass;
     private JPanel panelPrincipal, panelBotones;
+    private ControladorEmpleados  CE = new ControladorEmpleados();
     
     
     public LoginEmpleado(){
@@ -72,6 +77,7 @@ public class LoginEmpleado extends JFrame implements ActionListener{
        add(pAux, BorderLayout.CENTER);
        add(panelBotones, BorderLayout.SOUTH);
        
+       IniSesionPasajero.addActionListener(this);
        
        setVisible(true);
        setSize(400,300);
@@ -79,13 +85,31 @@ public class LoginEmpleado extends JFrame implements ActionListener{
     
     }    public void actionPerformed(ActionEvent evento) 
 	{
+             String id = campoLogin.getText();
+             String Password = campoPass.getText();
             
             
-}
-
+                 
+                 Empleado employee = CE.consultarEmpleado(id, Password);
+                 
+                 System.out.println(employee.getId());
+                 
+                 if (id.equals(employee.getId())&& Password.equals(employee.getContrasena())){
+                     
+                     VentanaPrincipal VP = new VentanaPrincipal(employee.getCargo());
+                 
+                 }else
+                 
+                 {
+                 
+                     JOptionPane.showMessageDialog(null,"El empleado con identificacion: "+ id + " y Password: " 
+                             + Password + " No Existe","Error", JOptionPane.ERROR_MESSAGE);
+                 }
+        
+        }
+    
     public static void main(String a[]){
-    
+        
         LoginEmpleado l = new LoginEmpleado();
-    
     }
 }

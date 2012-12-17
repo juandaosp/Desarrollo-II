@@ -21,7 +21,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Usuario
+ * @author ASUS
  */
 public class TarjetaIngresaEstacionJpaController implements Serializable {
 
@@ -39,8 +39,8 @@ public class TarjetaIngresaEstacionJpaController implements Serializable {
             tarjetaIngresaEstacion.setTarjetaIngresaEstacionPK(new TarjetaIngresaEstacionPK());
         }
         tarjetaIngresaEstacion.getTarjetaIngresaEstacionPK().setPinTarjeta(tarjetaIngresaEstacion.getTarjeta().getPin());
-        tarjetaIngresaEstacion.getTarjetaIngresaEstacionPK().setUbicacionEstacion(tarjetaIngresaEstacion.getEstacion1().getUbicacion());
         tarjetaIngresaEstacion.getTarjetaIngresaEstacionPK().setNombreEstacion(tarjetaIngresaEstacion.getEstacion().getNombreEstacion());
+        tarjetaIngresaEstacion.getTarjetaIngresaEstacionPK().setUbicacionEstacion(tarjetaIngresaEstacion.getEstacion1().getUbicacion());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -88,8 +88,8 @@ public class TarjetaIngresaEstacionJpaController implements Serializable {
 
     public void edit(TarjetaIngresaEstacion tarjetaIngresaEstacion) throws NonexistentEntityException, Exception {
         tarjetaIngresaEstacion.getTarjetaIngresaEstacionPK().setPinTarjeta(tarjetaIngresaEstacion.getTarjeta().getPin());
-        tarjetaIngresaEstacion.getTarjetaIngresaEstacionPK().setUbicacionEstacion(tarjetaIngresaEstacion.getEstacion1().getUbicacion());
         tarjetaIngresaEstacion.getTarjetaIngresaEstacionPK().setNombreEstacion(tarjetaIngresaEstacion.getEstacion().getNombreEstacion());
+        tarjetaIngresaEstacion.getTarjetaIngresaEstacionPK().setUbicacionEstacion(tarjetaIngresaEstacion.getEstacion1().getUbicacion());
         EntityManager em = null;
         try {
             em = getEntityManager();

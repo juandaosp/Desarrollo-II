@@ -63,7 +63,7 @@ public class ControladorProgramacion
     public void insertarProgramacion(String id,String nombre,String login,String contrasena,String eps,String salario,String licencia,char genero,String estado_civil,String fecha,String cargo,String estado)
     {
         Date fecha_con_formato=this.getDate(fecha);        
-        Empleado empleado = new Empleado(id, nombre, login, contrasena, eps, salario, licencia, genero, estado_civil,fecha_con_formato, cargo, estado);
+        Empleado empleado = new Empleado(id, nombre, contrasena, eps, salario, licencia, genero, estado_civil,fecha_con_formato, cargo, estado);
         
         try 
         {
@@ -94,7 +94,6 @@ public class ControladorProgramacion
             String estado="12121";
             
             empleado_encontrado.setNombre(nombre);
-            empleado_encontrado.setLogin(login);
             empleado_encontrado.setContrasena(contrasena);
             empleado_encontrado.setEps(eps);
             empleado_encontrado.setSalario(salario);

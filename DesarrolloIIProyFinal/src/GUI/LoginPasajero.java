@@ -36,9 +36,13 @@ public class LoginPasajero extends JFrame implements ActionListener{
     
     public LoginPasajero(){
         
-        super("SSTM - Login");
+        super("SSTM - Login Pasajero");
         
-        IniSesionPasajero= new JButton("Iniciar Sesion"); 
+        
+        IniSesionPasajero= new JButton("Iniciar Sesion");
+        
+        
+        
         IniCancelar= new JButton("Cancelar");
         
         ImageIcon imLogo = new ImageIcon(getClass().getResource("/images/smalllogo.png"));
@@ -73,24 +77,32 @@ public class LoginPasajero extends JFrame implements ActionListener{
        add(pAux, BorderLayout.CENTER);
        add(panelBotones, BorderLayout.SOUTH);
        
+       IniSesionPasajero.addActionListener(this);
        
        setVisible(true);
        setSize(400,300);
        setResizable(false);
     
-    }    public void actionPerformed(ActionEvent evento) 
-	{
+    }    
+    
+    public void actionPerformed(ActionEvent evento)
+    
+    {
+        if (evento.getSource() == IniSesionPasajero){
             
-            if (evento.getSource() == IniSesionPasajero){
-            
-                try{
-                String pin = campoPin.getText();
+                System.out.println("Accesando al metodo");
                 
-                Usuario user = cu.consultarUsuario(pin);
+                try{
+                    
+                    String pin = campoPin.getText();
+                    Usuario user = cu.consultarUsuario(pin);
+                    VentanaPrincipal VP = new VentanaPrincipal("Pasajero");
+                
                 }
                 catch(Exception e){
                 
                     JOptionPane.showMessageDialog(null,e.getStackTrace() ,"Error", JOptionPane.ERROR_MESSAGE);
+                
                 }
                 
             

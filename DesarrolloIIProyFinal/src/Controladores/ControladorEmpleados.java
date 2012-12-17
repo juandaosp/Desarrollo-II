@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import javax.persistence.EntityManager;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,23 +34,29 @@ public class ControladorEmpleados
        
     }
     
-    public void consultarEmpleado(String idEmpleado){
+    public Empleado consultarEmpleado(String id, String contrasena){
     
         Iterator i;
         //sirve para ejecutar consultas
-        i = manager.createQuery("SELECT e FROM Empleado e WHERE (e.id = '"+idEmpleado+"')").getResultList().iterator();
-//        System.out.print("id |\t Estado  |\t Nombre |\t Login\n");
+        i = manager.createQuery("SELECT e FROM Empleado e WHERE  e.id = '" + id + "' AND "
+        + "e.contrasena = '" + contrasena+"'").getResultList().iterator();
+       
+        //System.out.print("id |\t Estado  |\t Nombre |\t Login\n");
+       
+        Empleado empleado = new Empleado();
         while(i.hasNext())
         {
-            Empleado empleado = (Empleado) i.next();
+            empleado = (Empleado) i.next();
             System.out.print(empleado.getNombre());
         }
+        return empleado;
     }    
     
-    public void insertarEmpleado(String id,String nombre,String login,String contrasena,String eps,String salario,String licencia,char genero,String estado_civil,String fecha,String cargo,String estado)
+    public void insertarEmpleado(String id,String nombre,String login,String contrasena,String eps,String salario,String licencia,char genero,String estado_civil,String fecha,String cargo)
     {
-        Date fecha_con_formato=this.getDate(fecha);        
-        Empleado empleado = new Empleado(id, nombre, login, contrasena, eps, salario, licencia, genero, estado_civil,fecha_con_formato, cargo, estado);
+        Date fecha_con_formato=this.getDate(fecha);    
+        String estado = "activo";
+        Empleado empleado = new Empleado(id, nombre, contrasena, eps, salario, licencia, genero, estado_civil,fecha_con_formato, cargo, estado);
         
         try 
         {
@@ -58,6 +65,7 @@ public class ControladorEmpleados
         catch (Exception e) 
         {
         
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
          
     }
@@ -80,7 +88,6 @@ public class ControladorEmpleados
             String estado="12121";
             
             empleado_encontrado.setNombre(nombre);
-            empleado_encontrado.setLogin(login);
             empleado_encontrado.setContrasena(contrasena);
             empleado_encontrado.setEps(eps);
             empleado_encontrado.setSalario(salario);
@@ -147,11 +154,7 @@ public class ControladorEmpleados
 
     }
     
-    public static void main(String[] args)
-    {
-        ControladorEmpleados controladorEmpleados = new ControladorEmpleados();
-        controladorEmpleados.consultarEmpleado("001");
-    }
+
 
    
     

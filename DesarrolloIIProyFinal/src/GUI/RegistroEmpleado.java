@@ -6,6 +6,7 @@ package GUI;
 
 import Controladores.ControladorEmpleados;
 import java.awt.BorderLayout;
+import java.awt.Event;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,10 +17,10 @@ import javax.swing.*;
  *
  * @author Dash
  */
-public class RegistarEmpleado extends JFrame implements ActionListener
+public class RegistroEmpleado extends JFrame implements ActionListener
 {
         private JButton btRegistrar, btCancelar, btLimpiar;
-	private JComboBox comboGenero, comboEstadoCivil, comboTContrato, comboCargo, comboTipoID,comboEstado;
+	private JComboBox comboGenero, comboEstadoCivil, comboTContrato, comboCargo, comboTipoID;
 	private JTextField campoIdentificacion, campoNombre; 
 	private VentanaPrincipal ventanaP;
         private JPasswordField campoContrasena;
@@ -27,7 +28,7 @@ public class RegistarEmpleado extends JFrame implements ActionListener
         
         ControladorEmpleados controladorEmpleados;
         
-    public RegistarEmpleado()  
+    public RegistroEmpleado()  
     {
                 super("Registro Empleado");
                 
@@ -50,7 +51,6 @@ public class RegistarEmpleado extends JFrame implements ActionListener
 		String [] listaTContrato = {"Termino Indefinido", "Temporal", "Prestacion de Servicios"};
 		String [] listaCargo = {"Aux de Serv", "Director Oper", "Director de Estac.", "Atencion al Cliente", "Gerente"};
 		String [] listaTipoID = {"Cedula Extranjeria", "Cedula Ciudadania", "Pasaporte", "Tarjeta de identidad"};
-		String [] listaEstado = {"Activo","Inactivo"};
                 //para seleccionar cargos como un string: (String) cbCargo.getSelectedItem();
 
 		comboGenero = new JComboBox(listaGeneros);		
@@ -58,7 +58,7 @@ public class RegistarEmpleado extends JFrame implements ActionListener
 		comboTContrato = new JComboBox(listaTContrato);
 		comboCargo = new JComboBox(listaCargo);
 		comboTipoID = new JComboBox(listaTipoID);
-                comboEstado= new JComboBox(listaEstado);
+                
 
 		campoIdentificacion = new JTextField();
 		campoNombre = new JTextField();
@@ -96,7 +96,7 @@ public class RegistarEmpleado extends JFrame implements ActionListener
 		panelFIngreso.add(campoFIMes); 
 		panelFIngreso.add(campoFIDia); 
 
-		JPanel panelCentral = new JPanel(new GridLayout(13,2,5,5));
+		JPanel panelCentral = new JPanel(new GridLayout(12,2,5,5));
 		panelCentral.add(lbIdentificacion); 
 		panelCentral.add(campoIdentificacion);
 		panelCentral.add(lbNombre); 
@@ -118,9 +118,7 @@ public class RegistarEmpleado extends JFrame implements ActionListener
 		panelCentral.add(lbFechaNacimiento);
 		panelCentral.add(panelFNacimiento);
 		panelCentral.add(lbCargo);
-		panelCentral.add(comboCargo);		
-		panelCentral.add(new JLabel("Estado"));
-                panelCentral.add(comboEstado);
+		panelCentral.add(comboCargo);
 
 		JPanel b = new JPanel();
 		b.setLayout(new GridLayout(1,3,5,5));
@@ -128,7 +126,7 @@ public class RegistarEmpleado extends JFrame implements ActionListener
 		b.add(btLimpiar); 
 		b.add(btCancelar);
 
-		ImageIcon imLogo  = new ImageIcon("C:\\Users\\Dash\\Desktop\\Desarrollo-II\\DesarrolloIIProyecto\\src\\GUI\\LogoProyecto.png");		
+		ImageIcon imLogo = new ImageIcon(getClass().getResource("/images/smalllogo.png"));		
 		JLabel lbLogo = new JLabel(imLogo);		
 
 		setLayout(new BorderLayout(5,5));
@@ -140,18 +138,17 @@ public class RegistarEmpleado extends JFrame implements ActionListener
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
     
     }
     
-    public static  void main(String[] args)
-    {
-        RegistarEmpleado registarEmpleado = new RegistarEmpleado();
-    }
+
     public void actionPerformed(ActionEvent ev) 
 	{
             if(ev.getSource()==btRegistrar)
             {
+                
+                try{
                 String login,contrasena,eps,ano,dia,mes,licencia,id,nombre,salario,cargo,estado,estadocivil,contrato;
                 String genero;
                 
@@ -166,13 +163,31 @@ public class RegistarEmpleado extends JFrame implements ActionListener
                 nombre=campoNombre.getText();
                 salario=campoSalario.getText();
                 cargo=(String)comboCargo.getSelectedItem();
-                estado=(String)comboEstado.getSelectedItem();
                 estadocivil=(String)comboEstadoCivil.getSelectedItem();
                 genero=(String)comboGenero.getSelectedItem();
                 char genero_formateado = genero.charAt(0);
                 
                 
-                controladorEmpleados.insertarEmpleado(id, nombre, login, contrasena, eps, salario, licencia, genero_formateado, estadocivil,dia+"-"+mes+"-"+ano , cargo, estado);
+                controladorEmpleados.insertarEmpleado(id, nombre, login, contrasena, eps, salario, licencia, genero_formateado, estadocivil,dia+"-"+mes+"-"+ano , cargo);
+                
+                campoIdentificacion.setText("");
+                campoLogin.setText("");
+                campoContrasena.setText("");
+                campoEps.setText("");
+                campoFNAno.setText("");
+                campoFNDia.setText("");
+                campoFNMes.setText("");
+                campoLicencia.setText("");
+                campoNombre.setText("");
+                campoSalario.setText("");
+                } 
+                catch(Exception e)
+                
+                {
+                
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    
+                }
             }
             if(ev.getSource()==btLimpiar)
             {

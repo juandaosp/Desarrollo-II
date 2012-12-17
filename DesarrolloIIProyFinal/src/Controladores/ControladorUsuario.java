@@ -47,7 +47,7 @@ public class ControladorUsuario {
          Iterator i;
             //sirve para ejecutar consultas
         
-            i = manager.createQuery("SELECT u FROM usuario u WHERE (u.id_usuario ='"+idUsuario+"')").getResultList().iterator();
+            i = manager.createQuery("SELECT u FROM Usuario u WHERE (u.idUsuario ='"+idUsuario+"')").getResultList().iterator();
             System.out.print("id |\t Nombre  |\t serial |\t proveedor\n");
             
             Usuario myusuario = new Usuario();

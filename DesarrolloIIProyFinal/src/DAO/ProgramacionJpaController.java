@@ -22,7 +22,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Usuario
+ * @author ASUS
  */
 public class ProgramacionJpaController implements Serializable {
 
@@ -39,9 +39,9 @@ public class ProgramacionJpaController implements Serializable {
         if (programacion.getProgramacionPK() == null) {
             programacion.setProgramacionPK(new ProgramacionPK());
         }
+        programacion.getProgramacionPK().setIdEmpleado(programacion.getEmpleado().getId());
         programacion.getProgramacionPK().setMatriculaBus(programacion.getBus().getMatricula());
         programacion.getProgramacionPK().setNombreRuta(programacion.getRuta().getNombreRuta());
-        programacion.getProgramacionPK().setIdEmpleado(programacion.getEmpleado().getId());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -88,9 +88,9 @@ public class ProgramacionJpaController implements Serializable {
     }
 
     public void edit(Programacion programacion) throws NonexistentEntityException, Exception {
+        programacion.getProgramacionPK().setIdEmpleado(programacion.getEmpleado().getId());
         programacion.getProgramacionPK().setMatriculaBus(programacion.getBus().getMatricula());
         programacion.getProgramacionPK().setNombreRuta(programacion.getRuta().getNombreRuta());
-        programacion.getProgramacionPK().setIdEmpleado(programacion.getEmpleado().getId());
         EntityManager em = null;
         try {
             em = getEntityManager();
